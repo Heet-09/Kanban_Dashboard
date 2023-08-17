@@ -1,0 +1,40 @@
+/* Dropdown.css */
+
+
+.dropdown-container{
+     height:50px;
+     /* border: 2px solid red; */
+     background-color: #ffffff;
+}
+.toggle-button {
+    font-style: italic;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    width: 12%;
+    border-radius: 5px;
+    /* text-align: right; */
+}
+
+.dropdown {
+  position: relative;
+  /* border: 2px solid red; */
+  background-color: #ffffff;
+  width: 30%;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+select {
+      margin: 0px 0px 5px 95px;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    padding-left: 20px;
+    font-size: 12px;
+}

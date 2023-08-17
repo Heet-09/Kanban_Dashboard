@@ -1,0 +1,57 @@
+.board{
+    min-width: 270px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+}
+
+.board_top{
+    display: flex;
+}
+
+.board_top_title{
+    flex:1;
+    display: flex;
+    align-items: center;
+    /* font-weight: bold; */
+    padding : 15px 0;
+}
+
+.board_top_title span{
+    color:rgb(255, 255, 255); 
+}
+
+.board_cards{
+    background-color: #f0efef;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    /* padding: 10px; */
+    /* border-bottom:10px; */
+    border-radius: 10px;
+
+}
+
+/* .board_top_title span{
+    color: black;
+    size: 10px;
+    border: 2px solid red;
+} */
+
+.plus-icon {
+  font-size: 24px; /* Adjust the size as needed */
+  /* margin-right: 10px; Adding some spacing */
+}
+
+/* .more-icon {
+  font-size: 24px; /* Adjust the size as needed 
+} */
+
+/* .icon-profile{
+    background-image: url("./signal.png");
+    height: 10px;
+    width: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
