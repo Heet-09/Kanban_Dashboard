@@ -3,7 +3,7 @@ import "./Dropdown.css";
 // You can create a CSS file for styling
 import { useNavigate } from 'react-router-dom';
 
-const Dropdown = ({selectedGrouping,setSelectedGrouping}) => {
+const Dropdown = ({selectedGrouping,setSelectedGrouping,setOrdering}) => {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOrdering, setSelectedOrdering] = useState("");
 
@@ -14,6 +14,7 @@ const Dropdown = ({selectedGrouping,setSelectedGrouping}) => {
 
   const handleOrderingChange = (event) => {
     setSelectedOrdering(event.target.value);
+    setOrdering(event.target.value)
 
   };
   // const history = useNavigate();
@@ -29,6 +30,8 @@ const Dropdown = ({selectedGrouping,setSelectedGrouping}) => {
   //   // Redirect to the selected board
   //   history.push(`/${selectedValue}`);
   // };
+
+  
 
   return (
     <div className="dropdown-container">
@@ -51,8 +54,8 @@ const Dropdown = ({selectedGrouping,setSelectedGrouping}) => {
             Ordering
             <select value={selectedOrdering} onChange={handleOrderingChange}>
               <optgroup>
-                <option value="optionA">Priority</option>
-                <option value="optionB">Title</option>
+                <option value="priority">Priority</option>
+                <option value="title">Title</option>
               </optgroup>
             </select>
           </div>

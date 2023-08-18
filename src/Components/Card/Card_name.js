@@ -16,7 +16,7 @@ function Card({ticket}) {
       </div>
           <div className="card_title">
               {/* <span> ✔</span> */}
-         ✔ {ticket.title}
+         ✔ {ticket.title}{ticket.priority}
         <i class="fa-solid fa-user"></i>
       </div>
       <div className="card_footer">
