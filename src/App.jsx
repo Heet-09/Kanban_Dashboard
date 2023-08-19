@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import "./App.css";
-import Dropdown from "./Components/Dropdown/Dropdown.js";
+import Dropdown from "./Components/Dropdown/Dropdown.jsx";
 import BoardStatus from "./Components/Boards/board_status";
 import BoardName from "./Components/Boards/Board_name";
 import BoardPriority from "./Components/Boards/Board_priority";
