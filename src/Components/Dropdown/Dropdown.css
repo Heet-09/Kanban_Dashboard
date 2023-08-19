@@ -1,6 +1,7 @@
 .dropdown-container {
   width: 20%;
   background-color: #ffffff;
+  
 }
 .toggle-button {
   font-style: italic;
@@ -9,9 +10,14 @@
 }
 
 .dropdown {
-  position: relative;
   border-radius: 20px;
   font-size: 13px;
+  position: absolute;
+  top: 41px;
+    right: 1330px;
+    z-index: 1;
+    /* padding: 0 0 0 0;
+    margin: 0 5 0 5px; */
 }
 
 select {

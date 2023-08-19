@@ -1,10 +1,8 @@
 import React from "react";
 import "./Card_priority.css";
-import { AiOutlineEllipsis } from "react-icons/ai";
 import { BsFillRecordFill } from "react-icons/bs";
 
-
-function cardPriority({ card, users }) {
+function CardPriority({ card, users }) {
   const assignedUser = users.find((user) => user.id === card.userId);
   const userInitials = assignedUser ? getUserInitials(assignedUser.name) : "";
 
@@ -27,7 +25,9 @@ function cardPriority({ card, users }) {
       <div className="card_footer">
         {/* <AlertCircle />
         <Circle /> */}
-        <span >... &nbsp;&nbsp; <BsFillRecordFill className="fill"/> {card?.tag[0]}</span>
+        <span>
+          ... &nbsp;&nbsp; <BsFillRecordFill className="fill" /> {card?.tag[0]}
+        </span>
       </div>
     </div>
   );
@@ -42,4 +42,4 @@ function getUserInitials(name) {
   return initials;
 }
 
-export default cardPriority;
+export default CardPriority;

@@ -9,9 +9,16 @@ function Board_name({ data, selectedOrdering }) {
   const sortedUsers = data.users
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
-  console.log(sortedUsers);
+  // console.log(sortedUsers);
+  // let heet = sortedUsers;
+  // // console.log(heet[0].name);
+  // let userInitials; 
+  // for (const user of heet) {
+  //   userInitials = getUserInitials(user.name);
+  //   // console.log(userInitials);
+  // }
   
-  const userInitials = assignedUser ? getUserInitials(assignedUser.name) : "";
+
 
   return (
     <>
@@ -20,10 +27,12 @@ function Board_name({ data, selectedOrdering }) {
           (ticket) => ticket.userId === usr.id
         );
         const totalNumber = ticketsPerUser.length;
+        console.log(ticketsPerUser);
         return (
           <div className="board" key={usr.id}>
             <div className="board_top">
               <p className="board_top_title">
+                <span className="userinitials">{getUserInitials(usr.name)}</span>
                 {usr.name} {totalNumber}
               </p>
               <div className="plus-icon">+ ...</div>

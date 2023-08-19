@@ -16,9 +16,9 @@
     padding : 15px 0;
 }
 
-.board_top_title span{
+/* .board_top_title span{
     color:rgb(255, 255, 255); 
-}
+} */
 
 .board_cards{
     background-color: #f0efef;
@@ -33,3 +33,15 @@
   font-size: 24px; 
 }
 
+.userinitials {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  line-height: 10px;
+  text-align: center;
+  font-size: 10px;
+    background-color: rgb(244, 244, 244);
+  border-radius: 50%; 
+  color: black;
+  margin-right: 10px;
+}
