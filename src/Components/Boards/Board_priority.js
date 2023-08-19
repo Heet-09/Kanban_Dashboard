@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-import { MoreHorizontal } from "react-feather";
+import React, { useState, useEffect } from "react";
 import "./Board_name.css";
-import Card from "../Card/Card_priority";
-import { AppContext } from "../../App";
 import Card_priority from "../Card/Card_priority";
+
 const obj = {
   0: "No priority",
   1: "Low",
@@ -18,7 +16,6 @@ function Board_priority({ data, selectedOrdering }) {
   
 
   useEffect(() => {
-    // Simulate API fetch and set data
     const priority_set = new Set();
     data.tickets.forEach((ticket) => priority_set.add(ticket.priority));
     setSorted([...priority_set].sort((a, b) => b - a));
@@ -38,19 +35,19 @@ function Board_priority({ data, selectedOrdering }) {
             ? cardsPerPriority.sort((a, b) => a.title.localeCompare(b.title))
             : cardsPerPriority.sort((a, b) => b.priority - a.priority);
 
-        const totalCards = sortedCards.length; // Total number of cards for this priority
+        const totalCards = sortedCards.length;
 
         return (
           <div className="board" key={sorted_number}>
             <div className="board_top">
               <p className="board_top_title">
-                ☮&nbsp; {obj[sorted_number]} &nbsp; &nbsp; {totalCards}
+                &nbsp; {obj[sorted_number]} &nbsp; &nbsp; {totalCards}
               </p>
               <div className="plus-icon">+ ...</div>
             </div>
             <div className="board_cards">
               {sortedCards.map((card) => (
-                <Card_priority card={card} users={data.users}  />
+                <cardPriority card={card} users={data.users}  />
               ))}
             </div>
           </div>
@@ -59,6 +56,8 @@ function Board_priority({ data, selectedOrdering }) {
     </>
   );
 }
+
+
 
 export default Board_priority;
 

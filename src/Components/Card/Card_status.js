@@ -1,6 +1,9 @@
 import React from "react";
 import "./Card_status.css";
-import { FiMoreHorizontal } from "react-icons/fi";
+import { AiOutlineEllipsis } from "react-icons/ai";
+import { BsFillRecordFill } from "react-icons/bs"
+// import { BsCircle } from "react-icons/ bs";
+// BsThreeDots;
 
 function Card_status({ data, users }) {
   const assignedUser = users.find((user) => user.id === data.userId);
@@ -10,15 +13,18 @@ function Card_status({ data, users }) {
     <div className="Card">
       <div className="card_top">
         <div className="card_top_labels">
-          <span className="user-initials">{userInitials}</span>
           <span className="left-content">{data?.id}</span>
+          <span className="right-content">
+            <span className="userinitials">{userInitials}</span>
+          </span>
           {/* Other content */}
         </div>
       </div>
       <div className="card_title">{data?.title}</div>
       <div className="card_footer">
-        <FiMoreHorizontal />
-        <span>{data?.tag[0]}</span>
+        <span>
+          ... &nbsp;&nbsp; <BsFillRecordFill className="fill" /> {data?.tag[0]}
+        </span>
       </div>
     </div>
   );

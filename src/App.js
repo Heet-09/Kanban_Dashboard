@@ -6,12 +6,10 @@ import Board_name from "./Components/Boards/Board_name";
 import Board_priority from "./Components/Boards/Board_priority";
 
 
-
 function App() {
    const [ticketsData, setTicketsData] = useState({ tickets: [], users: [] });
   const [selectedGrouping, setSelectedGrouping] = useState("name");
   useEffect(() => {
-    // Simulate API fetch and set data
     fetchData();
   }, []);
 
@@ -19,10 +17,10 @@ function App() {
     try {
       const response = await fetch(
         "https://api.quicksell.co/v1/internal/frontend-assignment"
-      ); // Replace with your API URL
-      const jsonData = await response.json(); // Parse response JSON
+      );
+      const jsonData = await response.json();
       setTicketsData((prev) => ({...prev, tickets: jsonData.tickets, users: jsonData.users}))
-      setTicketsData(jsonData); // Set the fetched data in the state
+      setTicketsData(jsonData); 
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -46,7 +44,6 @@ function App() {
         <div className="app_outer">
           {selectedGrouping == "priority" ? (
             <div className="app_boards">
-              {/* Based on priority */}
               <Board_priority
                 data={ticketsData}
                 selectedOrdering={selectedOrdering}

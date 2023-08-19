@@ -16,7 +16,6 @@ function Board_status({selectedOrdering,data}) {
   const [sorted, setSorted] = useState([]);
 
   useEffect(() => {
-    // Simulate API fetch and set data
     const status_set = new Set();
     data.tickets.forEach((ticket) => status_set.add(ticket.status));
     setSorted([...status_set].sort((a, b) => boardStatus[a] - boardStatus[b]));
@@ -43,13 +42,10 @@ function Board_status({selectedOrdering,data}) {
               {cardsPerStatus
                 .sort((a, b) => {
                   if (selectedOrdering === "title") {
-                    // Sort by title
                     return a.title.localeCompare(b.title);
                   } else if (selectedOrdering === "priority") {
-                    // Sort by priority
                     return a.priority - b.priority;
                   } else {
-                    // Default: No sorting
                     return 0;
                   }
                 })

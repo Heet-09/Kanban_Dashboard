@@ -24,18 +24,12 @@
     display: flex;
     gap:10px;
     background-color: #ffffff;
-    /* font-size: 10px; */
 }
-
- .user-initials {
-  
-}
-
 
 .left-content {
   flex: 1;
   text-align: left;
-    font-size: 11px;
+    font-size: 13px;
     background-color: #fff;
 }
 
@@ -43,20 +37,21 @@
   flex: 1;
   text-align: right;
   height: 0px;
-  /* background-color: #a02d2d;
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  line-height: 4px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #e4e4e4; /* Set the desired background color */
-  /* color: rgb(0, 0, 0); /* Set the desired text color 
-  border-radius: 50%;  Create a circular shape 
-  margin-right: 10px;  */
+  background-color: #d48d8d;
 
 }   
+.userinitials {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  line-height: 10px;
+  text-align: center;
+  font-size: 10px;
+    background-color: rgb(244, 244, 244);
+  border-radius: 50%; 
+  
+  margin-right: 10px;
+}
 .card_title{
     display:flex;
     justify-content:space-between;
@@ -79,4 +74,13 @@ span{
 
 .simile_icon{
      font-size: 18px; /* Adjust the size as needed */
+}
+
+.fill{
+  color: #d1d1d1;
+  background-color: white;
+}
+
+.alag-footer{
+  border: 2px solid red;
 }

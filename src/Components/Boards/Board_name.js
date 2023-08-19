@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { MoreHorizontal } from "react-feather";
 import "./Board_name.css";
 import Card from "../Card/Card_name.js";
 
-function Board_name({ data, selectedOrdering }) {
-  console.log(selectedOrdering);
 
-  // Sort the users array based on user's name
+function Board_name({ data, selectedOrdering }) {
+  
+
   const sortedUsers = data.users
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
+  console.log(sortedUsers);
+  
+  const userInitials = assignedUser ? getUserInitials(assignedUser.name) : "";
 
   return (
     <>
@@ -33,10 +35,8 @@ function Board_name({ data, selectedOrdering }) {
                     // Sort by title
                     return a.title.localeCompare(b.title);
                   } else if (selectedOrdering === "priority") {
-                    // Sort by priority
                     return a.priority - b.priority;
                   } else {
-                    // Default: No sorting
                     return 0;
                   }
                 })
@@ -51,4 +51,12 @@ function Board_name({ data, selectedOrdering }) {
   );
 }
 
+function getUserInitials(name) {
+  const nameParts = name.split(" ");
+  const initials = nameParts
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+  return initials;
+}
 export default Board_name;

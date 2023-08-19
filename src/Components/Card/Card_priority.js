@@ -1,9 +1,10 @@
 import React from "react";
 import "./Card_priority.css";
-import { AlertCircle, Circle } from "react-feather";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AiOutlineEllipsis } from "react-icons/ai";
+import { BsFillRecordFill } from "react-icons/bs";
 
-function Card({ card, users }) {
+
+function cardPriority({ card, users }) {
   const assignedUser = users.find((user) => user.id === card.userId);
   const userInitials = assignedUser ? getUserInitials(assignedUser.name) : "";
 
@@ -12,11 +13,13 @@ function Card({ card, users }) {
       <div className="card_top">
         <div className="card_top_labels">
           <span className="left-content">{card.id}</span>
-          <span className="right-content ">{userInitials}</span>
+          <span className="right-content ">
+            <span className="userinitials">{userInitials}</span>
+          </span>
         </div>
       </div>
       <div className="card_title">
-        ✔{card.title}{" "}
+        {card.title}{" "}
         {/*Add multi language supoort -Enable multi
         language support*/}
         <i class="fa-solid fa-user"></i>
@@ -24,8 +27,7 @@ function Card({ card, users }) {
       <div className="card_footer">
         {/* <AlertCircle />
         <Circle /> */}
-        <span className="card_footer_left">...</span>
-        <span>... &nbsp;&nbsp; O {card?.tag[0]}</span>
+        <span >... &nbsp;&nbsp; <BsFillRecordFill className="fill"/> {card?.tag[0]}</span>
       </div>
     </div>
   );
@@ -40,4 +42,4 @@ function getUserInitials(name) {
   return initials;
 }
 
-export default Card;
+export default cardPriority;
