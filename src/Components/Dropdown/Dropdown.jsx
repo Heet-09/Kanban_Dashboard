@@ -37,13 +37,13 @@
         {showOptions && (
           <div className="dropdown">
             <div className="Group">
-              Grouping
+              <h1 className="Option-title">Grouping</h1>
               <select
                 className="select-group"
                 value={selectedGrouping}
                 onChange={handleGroupingChange}
               >
-                <FaAngleDown /> 
+                <FaAngleDown />
                 <option className="Option" value="name">
                   Name <FaAngleDown />
                 </option>
@@ -53,7 +53,7 @@
             </div>
             <br />
             <div className="Order">
-              Ordering
+              <h1 className="Option-title">Ordering</h1>
               <select
                 className="select-order"
                 value={selectedOrdering}
