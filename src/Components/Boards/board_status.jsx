@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import { MoreHorizontal } from "react-feather";
+import React, { useState, useEffect} from "react";
 import "./Board_status.css";
-import Card from "../Card/Card_status.js";
+import Card from "../Card/Card_status.jsx";
 import { FiCircle} from "react-icons/fi";
 
-function Board_status({selectedOrdering,data}) {
+function BoardStatus({selectedOrdering,data}) {
   let boardStatus = {
     "Backlog": 1,
     "Todo": 2,
@@ -19,7 +18,7 @@ function Board_status({selectedOrdering,data}) {
     const status_set = new Set();
     data.tickets.forEach((ticket) => status_set.add(ticket.status));
     setSorted([...status_set].sort((a, b) => boardStatus[a] - boardStatus[b]));
-  }, []);
+  }, [boardStatus, data]);
 
   return sorted ? (
     <>
@@ -60,4 +59,7 @@ function Board_status({selectedOrdering,data}) {
   ) : null;
 }
 
-export default Board_status;
+export default BoardStatus;
+
+
+

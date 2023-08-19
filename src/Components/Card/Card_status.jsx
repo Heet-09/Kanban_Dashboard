@@ -1,9 +1,7 @@
 import React from "react";
 import "./Card_status.css";
-import { AiOutlineEllipsis } from "react-icons/ai";
 import { BsFillRecordFill } from "react-icons/bs"
-// import { BsCircle } from "react-icons/ bs";
-// BsThreeDots;
+
 
 function Card_status({ data, users }) {
   const assignedUser = users.find((user) => user.id === data.userId);

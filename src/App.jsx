@@ -1,9 +1,9 @@
-import React, { useState,useEffect, createContext } from "react";
+import React, { useState,useEffect } from "react";
 import "./App.css";
 import Dropdown from "./Components/Dropdown/Dropdown.js";
-import Board_status from "./Components/Boards/board_status";
-import Board_name from "./Components/Boards/Board_name";
-import Board_priority from "./Components/Boards/Board_priority";
+import BoardStatus from "./Components/Boards/board_status";
+import BoardName from "./Components/Boards/Board_name";
+import BoardPriority from "./Components/Boards/Board_priority";
 
 
 function App() {
@@ -42,25 +42,25 @@ function App() {
           />
         </div>
         <div className="app_outer">
-          {selectedGrouping == "priority" ? (
+          {selectedGrouping === "priority" ? (
             <div className="app_boards">
-              <Board_priority
+              <BoardPriority
                 data={ticketsData}
                 selectedOrdering={selectedOrdering}
               />
             </div>
           ) : null}
-          {selectedGrouping == "name" ? (
+          {selectedGrouping === "name" ? (
             <div className="app_boards">
-              <Board_name
+              <BoardName
                 data={ticketsData}
                 selectedOrdering={selectedOrdering}
               />
             </div>
           ) : null}
-          {selectedGrouping == "status" ? (
+          {selectedGrouping === "status" ? (
             <div className="app_boards">
-              <Board_status
+              <BoardStatus
                 selectedOrdering={selectedOrdering}
                 data={ticketsData}
               />

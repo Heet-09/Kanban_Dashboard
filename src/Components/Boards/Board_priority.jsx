@@ -11,7 +11,7 @@ const obj = {
   4: "Urgent"  
 }
 
-function Board_priority({ data, selectedOrdering }) {
+function BoardPriority({ data, selectedOrdering }) {
   const [sorted, setSorted] = useState([]);
   console.log(typeof (data.tickets));
   
@@ -20,7 +20,7 @@ function Board_priority({ data, selectedOrdering }) {
     const priority_set = new Set();
     data.tickets.forEach((ticket) => priority_set.add(ticket.priority));
     setSorted([...priority_set].sort((a, b) => b - a));
-  }, []);
+  }, [data]);
 
   return (
     <>
@@ -60,4 +60,4 @@ function Board_priority({ data, selectedOrdering }) {
 
 
 
-export default Board_priority;
+export default BoardPriority;

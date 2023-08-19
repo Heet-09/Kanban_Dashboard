@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React/*, { useState, useEffect } */from "react";
 import "./Board_name.css";
-import Card from "../Card/Card_name.js";
+import Card from "../Card/Card_name.jsx";
 
 
-function Board_name({ data, selectedOrdering }) {
+function BoardName({ data, selectedOrdering }) {
   
 
   const sortedUsers = data.users
     .slice()
     .sort((a, b) => a.name.localeCompare(b.name));
-  // console.log(sortedUsers);
-  // let heet = sortedUsers;
-  // // console.log(heet[0].name);
-  // let userInitials; 
-  // for (const user of heet) {
-  //   userInitials = getUserInitials(user.name);
-  //   // console.log(userInitials);
-  // }
-  
-
-
   return (
     <>
       {sortedUsers.map((usr) => {
@@ -68,4 +57,4 @@ function getUserInitials(name) {
     .toUpperCase();
   return initials;
 }
-export default Board_name;
+export default BoardName;

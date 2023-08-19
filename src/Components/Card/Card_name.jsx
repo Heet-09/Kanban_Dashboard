@@ -1,4 +1,4 @@
-    import React from "react";
+import React from "react";
 import "./Card_name.css";
 import { BsFillRecordFill } from "react-icons/bs"
 
