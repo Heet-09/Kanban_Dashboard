@@ -1,33 +1,36 @@
-import React from 'react'
-import "./Card_status.css"
-import { AlertCircle, Circle, Smile } from "react-feather";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import React from "react";
+import "./Card_status.css";
+import { FiMoreHorizontal } from "react-icons/fi";
 
-function Card() {
+function Card_status({ data, users }) {
+  const assignedUser = users.find((user) => user.id === data.userId);
+  const userInitials = assignedUser ? getUserInitials(assignedUser.name) : "";
+
   return (
     <div className="Card">
       <div className="card_top">
         <div className="card_top_labels">
-            <img src='confirmation.jpg' alt =""></img>
-          <span className="left-content">CAM-5</span>
-          <span className="right-content">
-            {/* <Smile className='simile_icon' /> */}
-            <img className=''/>
-          </span>
+          <span className="user-initials">{userInitials}</span>
+          <span className="left-content">{data?.id}</span>
+          {/* Other content */}
         </div>
       </div>
-      <div className="card_title">
-        Add multi language supoort -Enable multi language support
-        <i class="fa-solid fa-user"></i>
-      </div>
+      <div className="card_title">{data?.title}</div>
       <div className="card_footer">
-        {/* <AlertCircle />
-        <Circle /> */}
-       
-        <span>Feature Request</span>
+        <FiMoreHorizontal />
+        <span>{data?.tag[0]}</span>
       </div>
     </div>
   );
 }
 
-export default Card
+function getUserInitials(name) {
+  const nameParts = name.split(" ");
+  const initials = nameParts
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+  return initials;
+}
+
+export default Card_status;

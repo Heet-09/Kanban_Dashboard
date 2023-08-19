@@ -3,47 +3,46 @@ import { MoreHorizontal } from "react-feather";
 import "./Board_name.css";
 import Card from "../Card/Card_name.js";
 
-function Board_name({ data }) {
-  console.log("Hello",data);
-  const [ticketsData, setTicketsData] = useState({ tickets: [], users: [] });
-  useEffect(() => {
-    // Simulate API fetch and set data
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        "https://api.quicksell.co/v1/internal/frontend-assignment"
-      ); // Replace with your API URL
-      const jsonData = await response.json(); // Parse response JSON
-      setTicketsData((prev) => ({
-        ...prev,
-        tickets: jsonData.tickets,
-        users: jsonData.users,
-      }));
-      setTicketsData(jsonData); // Set the fetched data in the state
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  console.log(ticketsData);
+function Board_name({ data, selectedOrdering }) {
+  console.log(selectedOrdering);
+
+  // Sort the users array based on user's name
+  const sortedUsers = data.users
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <>
-      {ticketsData.users.map((usr) => {
-        const ticketsPerUser = ticketsData.tickets.filter(
+      {sortedUsers.map((usr) => {
+        const ticketsPerUser = data.tickets.filter(
           (ticket) => ticket.userId === usr.id
         );
-        console.log(ticketsPerUser);
+        const totalNumber = ticketsPerUser.length;
         return (
-          <div className="board">
+          <div className="board" key={usr.id}>
             <div className="board_top">
-              <p className="board_top_title">{usr.name}</p>
+              <p className="board_top_title">
+                {usr.name} {totalNumber}
+              </p>
               <div className="plus-icon">+ ...</div>
             </div>
             <div className="board_cards">
-              {ticketsPerUser.map((ticket) => {
-                return <Card ticket={ticket} />;
-              })}
+              {ticketsPerUser
+                .sort((a, b) => {
+                  if (selectedOrdering === "title") {
+                    // Sort by title
+                    return a.title.localeCompare(b.title);
+                  } else if (selectedOrdering === "priority") {
+                    // Sort by priority
+                    return a.priority - b.priority;
+                  } else {
+                    // Default: No sorting
+                    return 0;
+                  }
+                })
+                .map((ticket) => {
+                  return <Card ticket={ticket} key={ticket.id} />;
+                })}
             </div>
           </div>
         );

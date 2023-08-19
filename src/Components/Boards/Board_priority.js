@@ -3,6 +3,7 @@ import { MoreHorizontal } from "react-feather";
 import "./Board_name.css";
 import Card from "../Card/Card_priority";
 import { AppContext } from "../../App";
+import Card_priority from "../Card/Card_priority";
 const obj = {
   0: "No priority",
   1: "Low",
@@ -11,71 +12,46 @@ const obj = {
   4: "Urgent"  
 }
 
-function Board_priority({ selectedOrdering,data}) {
-  console.log(selectedOrdering);
-  console.log(data)
+function Board_priority({ data, selectedOrdering }) {
   const [sorted, setSorted] = useState([]);
-  const [ticketsData, setTicketsData] = useState({ tickets: [], users: [] });
-  // const { ticketsData } = useContext(AppContext)
-// console.log('Context', data)
+  console.log(typeof (data.tickets));
+  
 
   useEffect(() => {
     // Simulate API fetch and set data
-    console.log("data is " + ticketsData);
-    fetchData();
+    const priority_set = new Set();
+    data.tickets.forEach((ticket) => priority_set.add(ticket.priority));
+    setSorted([...priority_set].sort((a, b) => b - a));
   }, []);
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        "https://api.quicksell.co/v1/internal/frontend-assignment"
-      ); // Replace with your API URL
-      const jsonData = await response.json(); // Parse response JSON
-      setTicketsData((prev) => ({
-        ...prev,
-        tickets: jsonData.tickets,
-        users: jsonData.users,
-      }));
-      setTicketsData(jsonData); // Set the fetched data in the state
 
-      const priority_set = new Set();
-      jsonData.tickets.forEach((ticket) => priority_set.add(ticket.priority));
-      setSorted([...priority_set].sort((a, b) => b - a));
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  // console.log(sorted);
-  console.log(ticketsData);
-
-  const sortPerPriority = (setOrdering, array) => {
-    if (setOrdering === "priority") {
-      array.sort((a, b) => {
-        return b.priority - a.priority;
-      });
-
-      return array;
-    }
-  };
   return (
     <>
       {sorted.map((sorted_number) => {
-        const cardsPerPriority = ticketsData.tickets.filter(
+        const cardsPerPriority = data.tickets.filter(
           (ticket) => ticket.priority === sorted_number
         );
-        console.log(cardsPerPriority);
+        
+
+        // Sort cards within each priority based on selectedOrdering
+        const sortedCards =
+          selectedOrdering === "title"
+            ? cardsPerPriority.sort((a, b) => a.title.localeCompare(b.title))
+            : cardsPerPriority.sort((a, b) => b.priority - a.priority);
+
+        const totalCards = sortedCards.length; // Total number of cards for this priority
+
         return (
-          <div className="board">
+          <div className="board" key={sorted_number}>
             <div className="board_top">
               <p className="board_top_title">
-                ☮&nbsp; {obj[sorted_number]} &nbsp; &nbsp; 2
+                ☮&nbsp; {obj[sorted_number]} &nbsp; &nbsp; {totalCards}
               </p>
               <div className="plus-icon">+ ...</div>
             </div>
             <div className="board_cards">
-              {cardsPerPriority.map((card) => {
-                return <Card data={card} />;
-              })}
+              {sortedCards.map((card) => (
+                <Card_priority card={card} users={data.users}  />
+              ))}
             </div>
           </div>
         );
@@ -85,3 +61,4 @@ function Board_priority({ selectedOrdering,data}) {
 }
 
 export default Board_priority;
+

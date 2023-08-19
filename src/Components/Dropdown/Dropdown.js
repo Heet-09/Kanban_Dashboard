@@ -3,7 +3,7 @@ import "./Dropdown.css";
 // You can create a CSS file for styling
 import { useNavigate } from 'react-router-dom';
 
-const Dropdown = ({selectedGrouping,setSelectedGrouping,setOrdering}) => {
+const Dropdown = ({selectedGrouping, setSelectedGrouping, setOrdering, data, setTicketsData}) => {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOrdering, setSelectedOrdering] = useState("");
 
@@ -15,6 +15,8 @@ const Dropdown = ({selectedGrouping,setSelectedGrouping,setOrdering}) => {
   const handleOrderingChange = (event) => {
     setSelectedOrdering(event.target.value);
     setOrdering(event.target.value)
+    // sortTickets(data.tickets)
+    setTicketsData((prev) => ({...prev, tickets: data.tickets}))
 
   };
   // const history = useNavigate();
@@ -22,6 +24,18 @@ const Dropdown = ({selectedGrouping,setSelectedGrouping,setOrdering}) => {
   const toggleOptions = () => {
     setShowOptions(!showOptions);
   };
+
+  // sorting function
+  // const sortTickets = (tickets) => {
+  //   tickets.sort((a, b) => {
+  //     let strA = a.title.toLowerCase()
+  //     let strB = b.title.toLowerCase()
+  //     if(strA < strB) return -1;
+  //     if(strA > strB) return 1
+  //     return 0
+  //   })
+  //   setTicketsData(prev => ({...prev, tickets: data.tickets}))
+  // }
 
   // const handleGroupingChange = (event) => {
   //   const selectedValue = event.target.value;
