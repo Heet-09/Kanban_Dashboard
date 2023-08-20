@@ -14,7 +14,6 @@ function Card({ticket}) {
       </div>
       <div className="card_title">
         {ticket.title}
-        {ticket.priority}
       </div>
       <div className="card_footer">
         <span>
