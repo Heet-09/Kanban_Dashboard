@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Board_name.css";
 import CardPriority from "../Card/Card_priority";
-import {AiOutlineCheckCircle} from "react-icons/ai"
+import { AiOutlineCheckCircle } from "react-icons/ai"
 
 const obj = {
   0: "No priority",
@@ -42,13 +42,14 @@ function BoardPriority({ data, selectedOrdering }) {
           <div className="board" key={sorted_number}>
             <div className="board_top">
               <p className="board_top_title">
-                &nbsp; <AiOutlineCheckCircle/>&nbsp;{obj[sorted_number]} &nbsp; &nbsp; {totalCards}
+                &nbsp; <AiOutlineCheckCircle />
+                &nbsp;{obj[sorted_number]} &nbsp; &nbsp; {totalCards}
               </p>
               <div className="plus-icon">+ ...</div>
             </div>
             <div className="board_cards">
               {sortedCards.map((card) => (
-                <CardPriority card={card} users={data.users}  />
+                <CardPriority card={card} users={data.users} />
               ))}
             </div>
           </div>
